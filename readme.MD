@@ -1,3 +1,4 @@
+```
 <!-- run code in terminal -->
 
 <!-- option-1 -->
@@ -23,3 +24,4 @@ console.log(input);
 node index.js Enter
 write your input in terminal + Enter
 Ctrl + Z + Enter
+```
