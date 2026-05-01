@@ -15,5 +15,6 @@ console.log(checkPrime(1) ? "Prime" : "Not Prime");
 console.log(checkPrime(2) ? "Prime" : "Not Prime");
 console.log(checkPrime(9) ? "Prime" : "Not Prime");
 console.log(checkPrime(31) ? "Prime" : "Not Prime");
-console.log(checkPrime(81) ? "Prime" : "Not Prime");
+console.log(checkPrime(97) ? "Prime" : "Not Prime");
+
 console.log(checkPrime(n) ? "Prime" : "Not Prime");
