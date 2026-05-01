@@ -10,6 +10,7 @@ const input = fs.readFileSync(0, "utf-8").trim();
 const rev = Number(input.split("").reverse().join(""));
 console.log(rev);
 
+// different approach but actual scenerio
 // let n = Number(input);
 // let rev=0; 12345
 // while(n)
