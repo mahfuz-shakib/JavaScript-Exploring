@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
+  </head>
+  <body>
+    <h1 style="text-align: center">Image Slider</h1>
+    <div style="text-align: center">
+      <button id="prev"><h3>Prev</h3></button>
+      <img
+        src="./Image/mac.jpg"
+        alt=""
+        width="500px" height="400px" style="border-radius: 10px;"
+      />
+      <button id="next"><h3>Next</h3></button>
+    </div>
+
+    <script>
+      const images = [
+        "./Image/mac.jpg",
+        "./Image/cellphone.jpg",
+        "./Image/coffe.jpg",
+        "./Image/vegetable.jpg",
+        "./Image/car.jpg",
+      ];
+      let count = 0;
+      const img = document.querySelector("img");
+      const prev = document.getElementById("prev");
+      const next = document.getElementById("next");
+      prev.addEventListener("click", () => {
+        count--;
+        if (count < 0) count = images.length - 1;
+        img.src = images[count];
+      });
+      next.addEventListener("click", () => {
+        count++;
+        if (count === images.length) count = 0;
+        img.src = images[count];
+      });
+
+      let intervalId = setInterval(() => {
+        count++;
+        if (count === images.length) count = 0;
+        img.src = images[count];
+      }, 2000);
+
+
+    //   auto slide
+      img.addEventListener("mouseenter", () => {
+        clearInterval(intervalId);
+      });
+      img.addEventListener("mouseleave", () => {
+        intervalId = setInterval(() => {
+          count++;
+          if (count === images.length) count = 0;
+          img.src = images[count];
+        }, 2000);
+      });
+    </script>
+  </body>
+</html>

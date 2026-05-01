@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>DOM</title>
+  </head>
+  <body>
+    <h1>hello hello hello</h1>
+    <h1 class="head1">This is new Bangladesh</h1>
+    <h1 class="head1">July Revolution 2024</h1>
+    <h1 class="head1">Liberation War 1971</h1>
+    <script>
+      const list = document.querySelectorAll(".head1");
+      let newEle = document.createElement("p");
+      newEle.innerText = "This is a paragraph";
+      document.body.appendChild(newEle).style.fontSize = "36px";
+      // document.body.removeChild();
+      // document.body.removeChild(newEle);
+
+      list[0].style.backgroundColor = "red";
+      list[1].style.fontStyle = "italic";
+      list[2].innerText = "New text added";
+      newEle.style.color = "gold";
+    </script>
+  </body>
+</html>

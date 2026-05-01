@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter App</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="mt-8">
+    <h1 class="text-center text-4xl font-bold">Counter</h1>
+    <div class="w-1/2 mx-auto bg-blue-50 mt-8">
+      <div class="w-full bg-green-200 rounded py-5 mb-4 text-3xl text-center font-bold" > 
+        Current Cart : <span id="cart">0</span>
+      </div>
+      <div class="flex justify-between">
+        <button disabled class="bg-yellow-400 hover:bg-yellow-600   border-none rounded py-4 w-24 text-3xl font-bold disabled:bg-gray-400 disabled:cursor-not-allowed">-</button>
+        <button  class="bg-blue-400  hover:bg-blue-600   border-none rounded py-4 w-24 text-3xl font-bold  disabled:bg-gray-400 disabled:cursor-not-allowed">+</button>
+        <button  class="bg-red-400   hover:bg-red-600   border-none rounded py-4 w-24 text-3xl font-bold">Reset</button>
+      </div>
+    </div>
+
+    <script>
+        const cart = document.getElementById('cart');
+        const btn = document.querySelectorAll('button');
+        let count=0;   
+        btn[0].addEventListener('click',function(){ 
+            count--;
+            // if(count<0)
+            // {
+            //     count++;
+            //     alert("Can't reduce more")
+            // }
+            cart.innerText = count;
+            if(count==0) 
+            {
+                btn[0].disabled=true;
+            }
+            btn[1].disabled=false;
+        })
+        btn[1].addEventListener('click',function(){ 
+            count++;
+            // if(count>10)
+            // {
+            //     count--;
+            //     alert("Cart limit up")
+            // }
+            cart.innerText = count;
+            btn[0].disabled=false;
+            if(count==10) btn[1].disabled=true;
+            else btn[1].disabled=false;
+        })
+        btn[2].addEventListener('click',function(){ 
+            count=0;
+            cart.innerText = count;
+            btn[0].disabled=true;
+
+        })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>DOM</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style></style>
+  </head>
+  <body>
+    <button
+      id="micky-mouse"
+      class="text-3xl font-bold m-10 border-2 p-4 rounded"
+    >
+      Micky mouse minine</button
+    ><br />
+    <input
+      type="text"
+      class="border-2 rounded p-1 m-4"
+      placeholder="Enter Your Name"
+    />
+    <input
+      type="text"
+      class="border-2 rounded p-1 m-4"
+      placeholder="Enter Your Email"
+    />
+    <script>
+      const btn = document.getElementById("micky-mouse");
+      // btn.addEventListener('mouseenter',function(e){
+      //   console.log('mouse entered');
+      // })
+      // btn.addEventListener('mouseout',function(e){
+      //   console.log('mouse out');
+      // })
+      // btn.addEventListener('mousemove',function(e){
+      //   console.log('mouse move');
+      // })
+      // btn.addEventListener('mouseover',function(e){
+      //   console.log('mouse hover');
+      // })
+
+      const input = document.getElementsByTagName("input");
+
+      // input[0].addEventListener("focus", function () {
+      //   console.log("writing name....");
+      // });
+      // input[1].addEventListener("focus", function () {
+      //   console.log("writing email....");
+      // });
+      // input[0].addEventListener("blur", function () {
+      //   console.log("writing name done");
+      // });
+      // input[1].addEventListener("blur", function () {
+      //   console.log("writing email done");
+      // });
+
+      //   keyboard events
+      // input[0].addEventListener("keydown", function (e) {
+      //   console.log("typing...", e.target.value);
+      // });
+      input[0].addEventListener("keyup", function (e) {
+        console.log("typing...", e.target.value);
+      });
+    </script>
+  </body>
+</html>

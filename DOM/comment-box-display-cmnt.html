@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>DOM</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style></style>
+  </head>
+  <body>
+    <h1 class="text-3xl text-center font-bold my-8 text-violet-600">
+      My awesome comment system
+    </h1>
+    <hr />
+    <div class="comment-container border-2 w-2/3 mx-auto m-5 ">
+      <p class="m-5 border-2 border-blue-500 p-4 rounded-lg">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur
+        minus harum adipisci quo odio quisquam, perferendis numquam dolores.
+      </p>
+      <p class="m-5 border-2 border-blue-500 p-4 rounded-lg">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur
+        minus harum adipisci quo odio quisquam, perferendis numquam dolores.
+      </p>
+      <p class="m-5 border-2 border-blue-500 p-4 rounded-lg">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur
+        minus harum adipisci quo odio quisquam, perferendis numquam dolores.
+      </p>
+    </div>
+    <hr />
+    <div class="flex items-center justify-center m-5  gap-5">
+      <label for="comment"> Comment: </label>
+      <textarea
+      name="comment"
+      id="comment"
+      value="#"
+      class=" resize-none border-2 border-green-500 rounded p-4 "
+      cols="50"
+      rows="4"
+    ></textarea>
+    <button
+      type="submit"
+      value="submit"
+      class=" bg-blue-400 p-4 font-bold text-xl text-white rounded hover:bg-blue-600"
+    >
+      Submit
+    </button>
+    </div>
+
+    <script>
+      const box = document.querySelector("#comment");
+      const btn = document.querySelector("button");
+      const container = document.querySelector(".comment-container");
+      const existingCmnt = document.querySelector("p");
+
+      const bgColors = [
+        "bg-red-100",
+        "bg-blue-100",
+        "bg-green-100",
+        "bg-violet-100",
+        "bg-pink-100",
+        "bg-yellow-100",
+      ];
+
+      btn.addEventListener("click", function () {
+        const text = box.value;
+        const test = text.split(" ").join("");
+        if (test.length) {
+          const newCmnt = document.createElement("p");
+          newCmnt.innerText = text;
+          // newCmnt.className = existingCmnt.className;
+          newCmnt.classList.add(...existingCmnt.classList);
+          const bgColor = bgColors[Math.floor(Math.random() * bgColors.length)];
+          newCmnt.classList.add(bgColor);
+          container.appendChild(newCmnt);
+          box.value = "";
+        }
+      });
+      box.addEventListener('focus',function(){
+        box.classList.add("border-green-500");
+      })
+    </script>
+  </body>
+</html>

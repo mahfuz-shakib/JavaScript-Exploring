@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API-JSON</title>
+    <!-- tailwind.css cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <div class="mt-5 text-center">
+      <!-- <button onclick="loadData()" class="bg-blue-200 p-3 rounded-lg hover:bg-blue-500">Load Data</button> -->
+      <button onclick="postData()" class="bg-blue-200 p-3 rounded-lg hover:bg-blue-500">Post Data</button>
+    </div>
+    <br />
+    <div id="post-container" class="max-w-[80%] border-2 border-lime-300 mx-auto p-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 rounded-lg"></div>
+    <script src="./index.js"></script>
+    <script src="./post.js"></script>
+  </body>
+</html>

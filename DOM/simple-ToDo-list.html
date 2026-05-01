@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      h1 {
+        margin: 24px 0;
+        text-align: center;
+      }
+      form {
+        margin-top: 32px;
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+      }
+      #text {
+        padding: 8px;
+        border-radius: 5px;
+        font-size: 1.5rem;
+        background-color: lavender;
+      }
+      #btn {
+        background-color: rgb(196, 248, 93);
+        padding: 8px 16px;
+        font-size: 1.5rem;
+        border-radius: 5px;
+      }
+      #btn:hover {
+        background-color: rgb(145, 217, 0);
+      }
+      h2 {
+        background-color: rgba(213, 255, 225, 0.531);
+        width: 70%;
+        display: block;
+        margin: 0 auto;
+        margin-top: 32px;
+        padding: 8px;
+        border-radius: 5px;
+        text-align: center;
+      }
+
+      #undone {
+        border: 2px solid black;
+        width: 75%;
+        height: 200px;
+        margin: 0px auto;
+        border-radius: 10px;
+        background-color: rgba(231, 223, 254, 0.473);
+        box-sizing: border-box;
+        list-style-type: square;
+        overflow: auto;
+      }
+      #done {
+        border: 2px solid black;
+        width: 75%;
+        height: 150px;
+        margin: 0 auto;
+        padding-top: 8px;
+        border-radius: 10px;
+        background-color: rgba(209, 250, 255, 0.489);
+        box-sizing: border-box;
+        list-style-type: square;
+        overflow: auto;
+      }
+      @media(max-width:576px) {
+        #done, #undone{
+            width: 100%;
+            margin: 0 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Simple To-Do list</h1>
+    <form action="">
+      <input type="text" id="text" placeholder="Write Your task" />
+      <input type="button" value="Add" id="btn" />
+    </form>
+    <h2>Undone</h2>
+    <ul id="undone"></ul>
+    <h2>Done</h2>
+    <ul id="done"></ul>
+
+    <script>
+      const undone = document.getElementById("undone");
+      let lists = undone.querySelectorAll("#undone li");
+      const done = document.getElementById("done");
+      const input = document.getElementById("text");
+      const btn = document.getElementById("btn");
+      let delButtons = [];
+      let complete = [];
+
+      btn.addEventListener("click", () => {
+        let p = document.createElement("p");
+        p.innerText = input.value;
+
+        let btn = document.createElement("button");
+        btn.innerText = "Complete";
+        btn.setAttribute("style", "padding:0 16px; border-radius: 5px; font-size: 18px");
+        delButtons.push(btn);
+
+        let div = document.createElement("div");
+        div.appendChild(p);
+        div.appendChild(btn);
+        div.setAttribute(
+          "style",
+          "display:flex; justify-content:space-between; align-items:center; margin-top:8px;  height:28px; "
+        );
+
+        const li_bg_colors = [
+          "#FFFAE5", // Light Cream
+          "#E6FFFA", // Mint Blue
+          "#FFF0F5", // Lavender Blush
+          "#E0FFFF", // Light Cyan
+          "#F5FFFA", // Mint Cream
+          "#FFE4E1", // Misty Rose
+          "#E6E6FA", // Lavender
+          "#F0FFF0", // Honeydew
+          "#FFFACD", // Lemon Chiffon
+          "#F5F5DC", // Beige
+        ];
+        let li = document.createElement("li");
+        li.appendChild(div);
+        li.setAttribute("style", "font-size:24px; margin-right:12px; border-radius:5px; padding:0 8px;");
+        li.style.backgroundColor = li_bg_colors[Math.floor(Math.random() * li_bg_colors.length)];
+        li.addEventListener("mouserebter", () => {
+          li.style.backgroundColor = "white";
+        });
+        undone.appendChild(li);
+        input.value = "";
+
+        for (let i = 0; i < delButtons.length; i++) {
+          const del = delButtons[i];
+          del.addEventListener("click", () => {
+            del.innerText = "Delete";
+            complete.push(del);
+            const div = del.parentElement;
+            const li = div.parentElement;
+            undone.removeChild(li);
+            done.appendChild(li);
+
+            for (let i = 0; i < complete.length; i++) {
+              const com = complete[i];
+              com.addEventListener("click", () => {
+                const div = com.parentElement;
+                const li = div.parentElement;
+                done.removeChild(li);
+              });
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

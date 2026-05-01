@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>DOM</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style></style>
+  </head>
+  <body class="py-10">
+    <h1 id="repo" class="text-3xl font-bold m-10">Custom-Repositiory</h1>
+    <input
+      type="text"
+      name="text"
+      id="text"
+      placeholder="Write exactly: delete"
+      class="border mx-10 rounded py-1 px-2"
+    />
+    <button
+      type="submit"
+      disabled
+      class="border rounded py-1 px-2 bg-green-200 hover:bg-green-400 mr-5 disabled:bg-gray-400 disabled:cursor-not-allowed"
+    >
+      Delete
+    </button>
+    <button
+      type="submit"
+      disabled
+      class="border rounded py-1 px-2 bg-green-200 hover:bg-green-400 disabled:bg-gray-400 disabled:cursor-not-allowed"
+    >
+      Recover
+    </button>
+
+    <script>
+      const repo = document.querySelector("#repo");
+      const input = document.querySelector("#text");
+      const btn = document.querySelectorAll("button");
+      input.addEventListener("keyup", function (e) {
+        if (e.target.value == "delete") btn[0].disabled = false;
+        else btn[0].disabled = true;
+      });
+      btn[0].addEventListener("click", function () {
+        document.body.removeChild(repo);
+        input.value="";
+        btn[0].disabled=true;
+        btn[1].disabled=false;
+      });
+      btn[1].addEventListener("click", function () {
+        document.body.insertBefore(repo,input);
+        btn[1].disabled = true;
+      });
+    </script>
+  </body>
+</html>

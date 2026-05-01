@@ -16,5 +16,5 @@ console.log(isLeapYear(year));
 
 //using ternary operator
 const y = 2024;
-isItLeapYear = (y%400==0) ? 'YES' : (y%4==0 && y%100) ? 'YES' : 'NO';
+const isItLeapYear = (y%400==0) ? 'YES' : (y%4==0 && y%100) ? 'YES' : 'NO';
 console.log(isItLeapYear);

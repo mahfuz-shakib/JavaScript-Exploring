@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Local Storage</title>
+  </head>
+  <body>
+    <fieldset>
+      <legend>Product Cart</legend>
+      <div>
+        <label for="product">Product name: </label>
+        <input id="product" type="text" placeholder="Product" />
+        <label for="quantity">Quantity: </label>
+        <input id="quantity" type="text" placeholder="Quantity" />
+        <button id="btn">Add</button>
+      </div>
+    </fieldset>
+    <ul id="ul"></ul>
+    <script>
+      const prod = document.getElementById("product");
+      const quant = document.getElementById("quantity");
+      const btn = document.getElementById("btn");
+      btn.addEventListener("click", () => {
+        const product = prod.value;
+        const quantity = parseInt(quant.value);
+        prod.value = "";
+        quant.value = "";
+        addProductToCart(product, quantity);
+      });
+      const getCartFromLS = () => {
+        let cart = {};
+        const cartJSON = localStorage.getItem("cart");
+        if (cartJSON) {
+          cart = JSON.parse(cartJSON);
+        }
+        return cart;
+      };
+      const addProductToCart = (product, quantity) => {
+        const cart = getCartFromLS();
+        if (cart[product]) {
+          cart[product] += quantity;
+        } else cart[product] = quantity;
+        const cartJSON = JSON.stringify(cart);
+        localStorage.setItem("cart", cartJSON);
+        displayStoredProduct();
+      };
+      const displayToUI = (product, quantity) => {
+        const li = document.createElement("li");
+        li.innerText = `${product} ${quantity}`;
+        document.getElementById("ul").appendChild(li);
+      };
+      const displayStoredProduct = () => {
+        const cart = getCartFromLS();
+        document.getElementById("ul").innerHTML="";
+        for (let product in cart) {
+          displayToUI(product, cart[product]);
+        }
+      };
+      displayStoredProduct();
+    </script>
+  </body>
+</html>

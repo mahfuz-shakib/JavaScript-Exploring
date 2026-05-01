@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        main{
+            padding: 48px;
+            background-color: red;
+        }
+        section{
+            background-color:green;
+            padding: 48px;
+        }
+        div{
+            background-color: rgb(75, 75, 245);
+            padding: 48px;
+            display: flex;
+            gap: 4px;
+        }
+        button{
+            padding: 24px;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section>
+            <div>
+                <button>
+                    AA
+                </button>
+                <button>
+                    BB
+                </button>
+                <button>
+                    CC
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const main = document.querySelector('main');
+        const section = document.querySelector('section');
+        const div = document.querySelector('div');
+        const btn = document.querySelectorAll('button');
+        main.addEventListener('click',function(e){
+            console.log('main main main')
+            e.stopPropagation();
+        },true)
+        section.addEventListener('click',function(e){
+            console.log('section section section')
+            // e.stopPropagation();
+        },true)
+        div.addEventListener('click',function(e){
+            console.log('div div div')
+            // e.stopPropagation();
+        },false);
+        btn[0].addEventListener('click',function(e){
+            console.log('button button button'); 
+            // e.stopPropagation();
+        })
+        // btn[1].addEventListener('click',function(e){
+        //     console.log('button button button'); 
+        // })
+        // btn[2].addEventListener('click',function(e){
+        //     console.log('button button button'); 
+        // })
+
+    </script>
+</body>
+</html>
